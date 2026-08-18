@@ -71,6 +71,9 @@ This is a danger message.
 #### ERROR
 This is an error message.
 
+A sentence with an LLM (Large Language Model) in the middle.
+A bare RST has no explanation to spell out.
+
 Italics are rarely used. Text surrounded by single asterisks is rendered in
 *italics*.
 

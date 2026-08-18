@@ -379,6 +379,17 @@ class MarkdownTranslator(SphinxTranslator):  # pylint: disable=too-many-public-m
         """Figure caption."""
         self._push_context(WrappedContext("*", params=SubContextParams(2, 2)))
 
+    def depart_abbreviation(self, node):
+        """Abbreviation directive.
+
+        Markdown has no equivalent of the HTML `title` attribute, so the explanation
+        is spelled out inline: `:abbr:`LLM (Large Language Model)`` becomes
+        `LLM (Large Language Model)`.
+        """
+        explanation = node.get("explanation")
+        if explanation:
+            self.add(f" ({explanation})")
+
     # noinspection PyPep8Naming
     def visit_Text(self, node):  # pylint: disable=invalid-name
         text = node.astext().replace("\r", "")
