@@ -246,6 +246,12 @@ the same level as the rest of the note.
 Warnings are formatted in the same way as notes. In the same way, lines must
 be broken and indented under the warning tag.
 
+#### Custom Admonition Title
+Generic admonition body.
+
+#### Sidebar Title
+Sidebar body.
+
 ## Cross-References
 
 In edX documents, you can include cross-references to other locations in the

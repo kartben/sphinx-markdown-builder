@@ -355,6 +355,16 @@ class MarkdownTranslator(SphinxTranslator):  # pylint: disable=too-many-public-m
         """Sphinx error directive."""
         self._push_box("ERROR")
 
+    @pushing_context
+    def visit_admonition(self, node):
+        """Generic admonition directive."""
+        self._push_box(node[0].astext())
+
+    @pushing_context
+    def visit_sidebar(self, node):
+        """Sphinx sidebar directive."""
+        self._push_box(node[0].astext())
+
     def visit_image(self, node):
         """Image directive."""
         uri = node["uri"]
@@ -501,7 +511,9 @@ class MarkdownTranslator(SphinxTranslator):  # pylint: disable=too-many-public-m
         self._push_status(section_level=self.status.section_level + 1)
 
     @pushing_context
-    def visit_title(self, _node):
+    def visit_title(self, node):
+        if isinstance(node.parent, (nodes.admonition, nodes.sidebar)):
+            raise nodes.SkipNode
         if isinstance(self.ctx, TableContext):
             level = 4
         else:

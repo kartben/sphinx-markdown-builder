@@ -306,6 +306,14 @@ Notes and Warnings
    Warnings are formatted in the same way as notes. In the same way, lines must
    be broken and indented under the warning tag.
 
+.. admonition:: Custom Admonition Title
+
+   Generic admonition body.
+
+.. sidebar:: Sidebar Title
+
+   Sidebar body.
+
 
 ****************************
 Cross-References
